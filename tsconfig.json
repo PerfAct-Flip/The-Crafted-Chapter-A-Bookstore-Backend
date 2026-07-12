@@ -35,8 +35,9 @@
     // "noFallthroughCasesInSwitch": true,
     // "noPropertyAccessFromIndexSignature": true,
 
-    // Recommended Options
-    "strict": true,
+    "strict": true,               // Enables all strict type-checking options
+    "strictNullChecks": true,      // Required specifically for Zod's optional fields
+
     "jsx": "react-jsx",
     "verbatimModuleSyntax": true,
     "isolatedModules": true,
