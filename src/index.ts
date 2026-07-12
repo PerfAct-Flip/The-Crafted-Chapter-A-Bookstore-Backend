@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import connectDB from "./config/db";
-import authRoutes from "./routes/authRoutes";
+import authRoutes from "./modules/auth/auth.routes";
 import productRoutes from "./routes/productRoutes";
 import cartRoutes from "./routes/cartRoutes";
 import orderRoutes from "./routes/orderRoutes";
@@ -33,3 +33,4 @@ const start = async () => {
 
     }
 }
+start();
