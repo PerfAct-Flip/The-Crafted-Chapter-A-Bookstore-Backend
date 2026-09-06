@@ -2,7 +2,7 @@ import type { Request, Response } from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { User } from "../models/User.js";
-import { AuthRequest } from "../middleware/auth";
+import type { AuthRequest } from "../middleware/auth";
 
 
 const generateToken = (id: string) =>
@@ -39,7 +39,7 @@ export const login = async (req: Request, res: Response) => {
     res.json({ token: generateToken(user._id.toString()) });
 };
 
-export const getProfile = async (req: AuthRequest, res: Response) => {
+export const    getProfile = async (req: AuthRequest, res: Response) => {
     try {
         const user = await User.findById(req.user?.id).select("-password");
         if (!user) return res.status(404).json({ message: "User not found" });
