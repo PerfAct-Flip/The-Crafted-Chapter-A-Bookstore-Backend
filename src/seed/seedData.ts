@@ -1,29 +1,31 @@
-import dotenv from "dotenv";
-import bcrypt from "bcryptjs";
-import connectDB from "../config/db";
-import { User } from "../models/User";
+import { prisma } from "../lib/prisma";
 import { Product } from "../models/Product";
 import products from "./data";
 
-dotenv.config();
+async function main() {
+  console.log("Starting data seeding.")
+  for (const book of products)
+    await prisma.book.upsert({
+      where: { title: book.title },
+      update: {
+        title: book.title,
+        author: book.author,
+        price: book.price,
+        description: book.description,
+        coverImage: book.coverImage,
+        genres: book.genres,
+      },
+      create: book,
+    });
+  console.log("Books seeding completed!!");
+}
 
-const seed = async () => {
-    await connectDB();
-
-    await User.deleteMany();
-    await Product.deleteMany();
-
-    const password = await bcrypt.hash("123456", 10);
-
-    const users = await User.insertMany([
-        { name: "Test User 1", email: "test1@mail.com", password },
-        { name: "Test User 2", email: "test2@mail.com", password }
-    ]);
-
-    await Product.insertMany(products);
-
-    console.log("Seeded successfully");
-    process.exit();
-};
-
-seed();
+main()
+  .catch((e) => {
+    console.error("Seeding error:", e);
+    process.exit(1);
+  })
+  .finally(async () => {
+    await prisma.$disconnect();
+    process.exit(0);
+  });

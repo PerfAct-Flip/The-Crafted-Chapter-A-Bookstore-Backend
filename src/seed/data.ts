@@ -1,6 +1,5 @@
 const products = [ 
   {
-    "id": "1",
     "title": "How to Stop Time",
     "author": "Matt Haig",
     "price": 499,
@@ -9,7 +8,6 @@ const products = [
     "genres": ["Fantasy", "Science Fiction", "Romance"]
   },
   {
-    "id": "2",
     "title": "Cogheart",
     "author": "Peter Bunzl",
     "price": 399,
@@ -18,7 +16,6 @@ const products = [
     "genres": ["Young Adult", "Steampunk", "Adventure"]
   },
   {
-    "id": "3",
     "title": "Looking for Alaska",
     "author": "John Green",
     "price": 450,
@@ -27,7 +24,6 @@ const products = [
     "genres": ["Young Adult", "Contemporary", "Romance"]
   },
   {
-    "id": "4",
     "title": "Charles Dickens: Four Great Novels",
     "author": "Charles Dickens",
     "price": 999,
@@ -36,7 +32,6 @@ const products = [
     "genres": ["Classics", "Historical Fiction", "Literary Fiction"]
   },
   {
-    "id": "5",
     "title": "Gulliver’s Travels",
     "author": "Jonathan Swift",
     "price": 349,
@@ -45,7 +40,6 @@ const products = [
     "genres": ["Classics", "Satire", "Adventure"]
   },
   {
-    "id": "6",
     "title": "Matilda",
     "author": "Roald Dahl",
     "price": 399,
@@ -54,7 +48,6 @@ const products = [
     "genres": ["Children's", "Fantasy", "Humor"]
   },
   {
-    "id": "7",
     "title": "The Story of My Life",
     "author": "Helen Keller",
     "price": 299,
@@ -63,7 +56,6 @@ const products = [
     "genres": ["Autobiography", "Memoir", "Non-fiction"]
   },
   {
-    "id": "8",
     "title": "The Journey of Rock: Four Days One Dream One Stage",
     "author": "Unknown",
     "price": 599,
@@ -72,7 +64,6 @@ const products = [
     "genres": ["Music", "Non-fiction", "Entertainment"]
   },
   {
-    "id": "9",
     "title": "The Echo Man",
     "author": "Richard Montanari",
     "price": 499,
@@ -81,7 +72,6 @@ const products = [
     "genres": ["Thriller", "Mystery", "Crime"]
   },
   {
-    "id": "10",
     "title": "The Untouchable",
     "author": "Gerald Seymour",
     "price": 550,
@@ -90,7 +80,6 @@ const products = [
     "genres": ["Thriller", "Crime", "Suspense"]
   },
   {
-    "id": "11",
     "title": "Eclipse",
     "author": "Stephenie Meyer",
     "price": 450,
@@ -99,7 +88,6 @@ const products = [
     "genres": ["Young Adult", "Fantasy", "Romance", "Paranormal"]
   },
   {
-    "id": "12",
     "title": "Harry Potter and the Half-Blood Prince",
     "author": "J.K. Rowling",
     "price": 699,
@@ -108,7 +96,6 @@ const products = [
     "genres": ["Fantasy", "Young Adult", "Magic"]
   },
   {
-    "id": "13",
     "title": "Tess of the D’Urbervilles",
     "author": "Thomas Hardy",
     "price": 350,
@@ -117,7 +104,6 @@ const products = [
     "genres": ["Classics", "Literary Fiction", "Romance", "Tragedy"]
   },
   {
-    "id": "14",
     "title": "A Tale of Two Cities",
     "author": "Charles Dickens",
     "price": 399,
@@ -126,7 +112,6 @@ const products = [
     "genres": ["Classics", "Historical Fiction", "Literary Fiction"]
   },
   {
-    "id": "15",
     "title": "King Lear",
     "author": "William Shakespeare",
     "price": 299,
@@ -135,7 +120,6 @@ const products = [
     "genres": ["Classics", "Drama", "Tragedy"]
   },
   {
-    "id": "16",
     "title": "The Alchemist",
     "author": "Paulo Coelho",
     "price": 499,
@@ -144,7 +128,6 @@ const products = [
     "genres": ["Literary Fiction", "Philosophy", "Spirituality"]
   },
   {
-    "id": "17",
     "title": "Kafka on the Shore",
     "author": "Haruki Murakami",
     "price": 550,
@@ -153,7 +136,6 @@ const products = [
     "genres": ["Magical Realism", "Fantasy", "Literary Fiction"]
   },
   {
-    "id": "18",
     "title": "Mandarin Gate",
     "author": "Eliot Pattison",
     "price": 600,
@@ -162,7 +144,6 @@ const products = [
     "genres": ["Mystery", "Thriller", "Historical Fiction"]
   },
   {
-    "id": "19",
     "title": "Knightley and Son",
     "author": "Rohan Gavin",
     "price": 400,
@@ -171,7 +152,6 @@ const products = [
     "genres": ["Young Adult", "Mystery", "Adventure"]
   },
   {
-    "id": "20",
     "title": "Set in Darkness",
     "author": "Ian Rankin",
     "price": 500,
@@ -180,7 +160,6 @@ const products = [
     "genres": ["Crime", "Mystery", "Thriller"]
   },
   {
-    "id": "21",
     "title": "Let It Snow",
     "author": "John Green, Maureen Johnson, Lauren Myracle",
     "price": 450,
@@ -189,7 +168,6 @@ const products = [
     "genres": ["Young Adult", "Romance", "Holiday"]
   },
   {
-    "id": "22",
     "title": "Love Like Blood",
     "author": "Mark Billingham",
     "price": 550,
@@ -198,7 +176,6 @@ const products = [
     "genres": ["Crime", "Thriller", "Mystery"]
   },
   {
-    "id": "23",
     "title": "A Secret Kept",
     "author": "Tatiana de Rosnay",
     "price": 480,
@@ -207,7 +184,6 @@ const products = [
     "genres": ["Literary Fiction", "Mystery", "Family"]
   },
   {
-    "id": "24",
     "title": "Men Without Women",
     "author": "Haruki Murakami",
     "price": 520,
@@ -216,7 +192,6 @@ const products = [
     "genres": ["Short Stories", "Literary Fiction", "Contemporary"]
   },
   {
-    "id": "25",
     "title": "The Kite Runner",
     "author": "Khaled Hosseini",
     "price": 600,
@@ -225,7 +200,6 @@ const products = [
     "genres": ["Historical Fiction", "Drama", "Literary Fiction"]
   },
   {
-    "id": "26",
     "title": "A Thousand Splendid Suns",
     "author": "Khaled Hosseini",
     "price": 650,
@@ -234,7 +208,6 @@ const products = [
     "genres": ["Historical Fiction", "Drama", "Literary Fiction"]
   },
   {
-    "id": "27",
     "title": "Omniscient Reader's Viewpoint",
     "author": "Sing-Shong",
     "price": 700,
