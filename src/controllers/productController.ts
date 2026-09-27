@@ -1,7 +1,7 @@
-import { Request, Response } from "express";
+import type { Request, Response } from "express";
 import { Product } from "../models/Product";
 import { User } from "../models/User";
-import { AuthRequest } from "../middleware/auth";
+import type { AuthRequest } from "../middleware/auth";
 
 export const getProducts = async (req: Request, res: Response) => {
   try {
