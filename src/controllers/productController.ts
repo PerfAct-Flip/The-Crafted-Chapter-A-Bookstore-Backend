@@ -1,7 +1,7 @@
 import type { Request, Response } from "express";
 import { Product } from "../models/Product";
 import { User } from "../models/User";
-import type { AuthRequest } from "../middleware/auth";
+import type { AuthenticatedRequest } from "../types/common";
 
 export const getProducts = async (req: Request, res: Response) => {
   try {
@@ -22,7 +22,7 @@ export const getProductById = async (req: Request, res: Response) => {
   }
 };
 
-export const createProduct = async (req: AuthRequest, res: Response) => {
+export const createProduct = async (req: AuthenticatedRequest, res: Response) => {
   try {
     const { title, author, price, description, coverImage, genres } = req.body;
     const product = await Product.create({
@@ -39,7 +39,7 @@ export const createProduct = async (req: AuthRequest, res: Response) => {
   }
 };
 
-export const updateProduct = async (req: AuthRequest, res: Response) => {
+export const updateProduct = async (req: AuthenticatedRequest, res: Response) => {
   try {
     const { title, author, price, description, coverImage, genres } = req.body;
     const product = await Product.findByIdAndUpdate(
@@ -55,7 +55,7 @@ export const updateProduct = async (req: AuthRequest, res: Response) => {
 };
 
 
-export const deleteProduct = async (req: AuthRequest, res: Response) => {
+export const deleteProduct = async (req: AuthenticatedRequest, res: Response) => {
   try {
     const product = await Product.findByIdAndDelete(req.params.id);
     if (!product) return res.status(404).json({ message: "Product not found" });
@@ -65,7 +65,7 @@ export const deleteProduct = async (req: AuthRequest, res: Response) => {
   }
 };
 
-export const toggleFavorite = async (req: AuthRequest, res: Response) => {
+export const toggleFavorite = async (req: AuthenticatedRequest, res: Response) => {
   try {
     const user = await User.findById(req.user?.id);
     if (!user) return res.status(404).json({ message: "User not found" });

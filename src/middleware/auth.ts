@@ -8,9 +8,6 @@ import type {
 import env from "../config/env";
 import { error } from "node:console";
 
-// export interface AuthRequest extends Request {
-//   user?: { id: string };
-// }
 export const requireBearerToken = (
   req: AuthenticatedRequest,
   res: Response,
