@@ -1,23 +1,20 @@
 import { prisma } from "../../lib/prisma";
 import type { Book, User } from "../../../generated/prisma/client";
-import { email } from "zod";
 
-export const findProducts = async (): Promise<Book[] | []> => {
+export const findAllBooks = async (): Promise<Book[] | []> => {
 
     const products = await prisma.book.findMany();
     return products;
-}
+}   
 
-export const findById = async (identifier: string): Promise<Book | null> => {
+export const findByTitle = async (title: string): Promise<Book | null> => {
     return prisma.book.findFirst({
-        where: {
-            OR: [{ id: identifier }, { email: identifier }],
-        }
+        where: { title }
     });
 }
 
-export const create = async (productData: any): Promise<Book | null> => {
-    const { title, author, price, description, coverImage, genres } = productData;
+export const create = async (bookData: any): Promise<Book | null> => {
+    const { title, author, price, description, coverImage, genres } = bookData;
     const book = prisma.book.create({
         data: {
             title,
@@ -57,7 +54,7 @@ export const update = async (id: string, fields: UpdateData ) => {
     return newBook;
 };
 
-export const deleteProduct = async (id: string) => {
+export const deleteBook = async (id: string) => {
     await prisma.book.delete({
         where : { id }
     })
