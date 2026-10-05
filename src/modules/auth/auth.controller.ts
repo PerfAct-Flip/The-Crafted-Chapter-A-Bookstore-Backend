@@ -99,7 +99,13 @@ export const login = async (
     setRefreshCookie(res, refreshToken);
 
     console.log({ userId: user.id, username: user.username }, 'Login success');
-    return success(res, user, {}, 200);
+    return success(res, {
+      id: user.id,
+      username : user.username,
+      email: user.email,
+      accessToken,
+      // refreshToken
+    }, {}, 200);
 
   } catch (e : any) {
     next(e);
