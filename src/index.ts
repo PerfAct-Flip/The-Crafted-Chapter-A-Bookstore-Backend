@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import connectDB from "./config/db";
 import authRoutes from "./modules/auth/auth.routes";
-import productRoutes from "./routes/productRoutes";
+import productRoutes from "./modules/product/product.routes";
 import cartRoutes from "./routes/cartRoutes";
 import orderRoutes from "./routes/orderRoutes";
 import { prisma } from "./lib/prisma";
