@@ -54,7 +54,7 @@ export const update = async (id: string, fields: UpdateData ) => {
     return newBook;
 };
 
-export const deleteBook = async (id: string) => {
+export const deleteBookById = async (id: string) => {
     await prisma.book.delete({
         where : { id }
     })
