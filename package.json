@@ -25,6 +25,7 @@
   "scripts": {
     "start": "bun run src/index.ts",
     "dev": "bun --watch run src/index.ts",
+    "build" : "bun build --compile ./src/index.ts --outfile myapp",
     "test": "bun test",
     "typecheck": "tsc --noEmit",
     "seed": "bun --bun run src/seed/seedData.ts"
