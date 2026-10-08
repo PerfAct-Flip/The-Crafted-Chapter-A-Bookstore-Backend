@@ -5,7 +5,7 @@ import {
   findByTitle,
   create,
   update,
-  deleteBook,
+  deleteBookById,
 } from "./product.service";
 import { success, error } from "../../utils/response";
 import { title } from "node:process";
@@ -22,7 +22,7 @@ export const getBooks = async (
       if (!product) {
         return error(res, "BOOK_NOT_FOUND", ` ${title} book not found`, {}, 404);
       }
-      return success(res, product); 
+      return success(res, product);
     }
     const products = await findAllBooks();
     if (!products) {
@@ -34,35 +34,55 @@ export const getBooks = async (
   }
 };
 
-export const createBook = async(
+export const createBook = async (
   req: AuthenticatedRequest,
   res: Response,
   next: NextFunction,
 ) => {
-    try{
-        const bookData = req.body;
-        const book = await create(bookData);
-        return success(res, book, {}, 201);
+  try {
+    const bookData = req.body;
+    const book = await create(bookData);
+    return success(res, book, {}, 201);
 
-    }catch(e){
-        next(e);
-    }
+  } catch (e) {
+    next(e);
+  }
 }
 
-export const updateBook = async(
+export const updateBook = async (
   req: AuthenticatedRequest,
   res: Response,
   next: NextFunction,
 ) => {
-    try{
-        const { id , newData } = req.body;
-        if(!id){
-            error(res,"ID_NOT_PROVIDED",'id not provided',{}, 400);
-        }
-        const book = await update(title,newData);
-        return success(res, book, {}, 201);
-
-    }catch(e){
-        next(e);
+  try {
+    const { id, newData } = req.body;
+    if (!id) {
+      error(res, "ID_NOT_PROVIDED", 'id not provided', {}, 400);
     }
+    const book = await update(title, newData);
+    return success(res, book, {}, 201);
+
+  } catch (e) {
+    next(e);
+  }
+}
+
+export const deleteBook = async (
+  req: AuthenticatedRequest,
+  res: Response,
+  next: NextFunction,
+) => {
+  try {
+    const { id } = req.body;
+    if (!id) {
+      error(res, "ID_NOT_PROVIDED", 'id not provided', {}, 400);
+    }
+    const book = deleteBookById(id);
+    if (!book) {
+      return error(res, "NO_Book", "Book not found", {}, 404)
+    }
+    success(res,"Book Deleted Successfully", {}, 200)
+  } catch (e) {
+    next(e);
+  }
 }
