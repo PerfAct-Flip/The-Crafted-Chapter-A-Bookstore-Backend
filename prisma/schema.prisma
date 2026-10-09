@@ -59,6 +59,7 @@ model CartItem {
   cartId   String @map("cart_id") @db.Uuid
   bookId   String @map("book_id") @db.Uuid
   quantity Int    @default(1)
+  price    Int
 
   // Relations
   cart Cart @relation(fields: [cartId], references: [id], onDelete: Cascade)
