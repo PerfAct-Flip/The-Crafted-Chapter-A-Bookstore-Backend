@@ -8,7 +8,6 @@ import {
   deleteBookById,
 } from "./product.service";
 import { success, error } from "../../utils/response";
-import { title } from "node:process";
 
 export const getBooks = async (
   req: Request,
@@ -59,7 +58,7 @@ export const updateBook = async (
     if (!id) {
       error(res, "ID_NOT_PROVIDED", 'id not provided', {}, 400);
     }
-    const book = await update(title, newData);
+    const book = await update(id, newData);
     return success(res, book, {}, 201);
 
   } catch (e) {
