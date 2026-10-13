@@ -191,7 +191,7 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "productId": {
+                  "bookId": {
                     "example": "any"
                   },
                   "quantity": {
