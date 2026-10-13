@@ -7,8 +7,9 @@ import swaggerDocument from '../swagger-output.json';
 import connectDB from "./config/db";
 import authRoutes from "./modules/auth/auth.routes";
 import productRoutes from "./modules/product/product.routes";
-import cartRoutes from "./routes/cartRoutes";
+import cartRoutes from "./modules/cart/cart.routes";
 import orderRoutes from "./routes/orderRoutes";
+import { errorHandler } from "./middleware/errorHandler";
 import { prisma } from "./lib/prisma";
 dotenv.config();
 // connectDB();
@@ -26,6 +27,10 @@ app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/orders", orderRoutes);
+
+// Central error handler — controllers call next(e), so every failure
+// (Prisma errors included) is rendered as the standard JSON envelope.
+app.use(errorHandler);
 
 
 const start = async () => {
