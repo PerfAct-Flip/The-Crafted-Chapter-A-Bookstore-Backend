@@ -6,7 +6,8 @@ import type {
   CustomJwtPayload,
 } from "../types/common";
 import env from "../config/env";
-import { error } from "node:console";
+import { error } from "../utils/response";
+import { ACCESS_TOKEN_COOKIE } from "../modules/auth/auth.service";
 
 export const requireBearerToken = (
   req: AuthenticatedRequest,
@@ -54,7 +55,7 @@ export const requireCookieToken = (
   if (req.user) {
     return next();
   }
-  const token = req.cookies?.accessToken;
+  const token = req.cookies?.[ACCESS_TOKEN_COOKIE];
   if (!token) {
     return error(
       res,
