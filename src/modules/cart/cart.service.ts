@@ -1,11 +1,17 @@
 import { prisma} from "../../lib/prisma";
 import type { Cart, CartItem, User} from "../../../generated/prisma/client";
 import { Prisma } from "../../../generated/prisma/client";
+import { findById } from "../product/product.service";
 // export const get = async (userId: string): Promise<Cart | null> => {
 //     return await prisma.cart.findFirst({
 //         where: { userId }
 //     })
 // }
+
+export const findPrice = async(bookId : string) => {
+        const book = await findById(bookId);
+        return book?.price;
+}
 export const findOrCreateCart = async (userId: string) => {
   try {
     const existingCart = await prisma.cart.findFirst({ where: { userId } });
@@ -39,9 +45,12 @@ export const findOrCreateCart = async (userId: string) => {
 export const add = async (
     cartId: string,
     bookId: string,
-    quantity: number,
-    price: number
+    quantity: number
 ): Promise<Cart | null> => {
+    const price = await findPrice(bookId);
+    if(price == undefined){
+        return null;
+    }
     const cart = await prisma.cart.update({
         where: { id: cartId },
         data: {
