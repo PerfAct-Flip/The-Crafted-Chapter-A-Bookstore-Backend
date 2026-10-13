@@ -31,9 +31,9 @@ export const addToCart = async (
   try {
     const userId = req.user?.id;
     if (!userId) return error(res, "USER_NOT_FOUND", "user not found", {}, 401);
-    const { bookId, quantity, price } = req.body;
+    const { bookId, quantity } = req.body;
     const cart = await findOrCreateCart(userId);
-    const item = await add(cart.id, bookId, quantity, price);
+    const item = await add(cart.id, bookId, quantity);
     return success(res, item);
   } catch (e) {
     next(e);
