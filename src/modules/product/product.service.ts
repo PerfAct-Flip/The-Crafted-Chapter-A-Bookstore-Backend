@@ -13,6 +13,12 @@ export const findByTitle = async (title: string): Promise<Book | null> => {
     });
 }
 
+export const findById = async (id: string): Promise<Book | null> => {
+    return prisma.book.findUnique({
+        where: { id }
+    });
+}
+
 export const create = async (bookData: any): Promise<Book | null> => {
     const { title, author, price, description, coverImage, genres } = bookData;
     const book = prisma.book.create({
