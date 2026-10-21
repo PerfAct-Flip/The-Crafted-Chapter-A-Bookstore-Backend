@@ -54,3 +54,5 @@ export const getOrderById = async (userId: string, orderId: string) => {
         include: { orderItems: true },
     });
 };
+const orderService = { create, getMyOrders, getOrderById};
+export default orderService;
