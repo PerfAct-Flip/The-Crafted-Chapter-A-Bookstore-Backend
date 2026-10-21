@@ -22,6 +22,7 @@ model User {
   orders             Order[]
   passwordResetToken PasswordResetToken?
   refreshTokens      RefreshToken[]
+  favorites          Favorite[]
 
   @@map("users")
 }
@@ -39,7 +40,8 @@ model Book {
   cartItems  CartItem[]
   orderItems OrderItem[]
 
-  deletedAt DateTime? @map("deleted_at")
+  deletedAt DateTime?  @map("deleted_at")
+  favorites Favorite[]
 
   @@index([deletedAt])
   @@map("books")
@@ -103,6 +105,19 @@ model OrderItem {
   @@index([orderId])
   @@index([bookId])
   @@map("order_items")
+}
+
+model Favorite {
+  userId    String   @map("user_id") @db.Uuid
+  bookId    String   @map("book_id") @db.Uuid
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  book Book @relation(fields: [bookId], references: [id], onDelete: Cascade)
+
+  @@id([userId, bookId])
+  @@index([bookId])
+  @@map("favorites")
 }
 
 model PasswordResetToken {
