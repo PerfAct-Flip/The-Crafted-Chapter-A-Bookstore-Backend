@@ -1,9 +1,9 @@
-import { Response } from "express";
+import type { Response } from "express";
 import { Order } from "../models/Order";
 import { Cart } from "../models/Cart";
-import { AuthRequest } from "../middleware/auth";
+import type { AuthenticatedRequest } from "../types/common";
 
-export const createOrder = async (req: AuthRequest, res: Response) => {
+export const createOrder = async (req: AuthenticatedRequest, res: Response) => {
     const { shippingAddress } = req.body;
     const userId = req.user?.id;
     if (!userId) return res.status(401).json({ message: "Not authorized" });
@@ -42,7 +42,7 @@ export const createOrder = async (req: AuthRequest, res: Response) => {
     }
 };
 
-export const getMyOrders = async (req: AuthRequest, res: Response) => {
+export const getMyOrders = async (req: AuthenticatedRequest, res: Response) => {
     const userId = req.user?.id;
     if (!userId) return res.status(401).json({ message: "Not authorized" });
 
@@ -54,7 +54,7 @@ export const getMyOrders = async (req: AuthRequest, res: Response) => {
     }
 };
 
-export const getOrderById = async (req: AuthRequest, res: Response) => {
+export const getOrderById = async (req: AuthenticatedRequest, res: Response) => {
     const userId = req.user?.id;
     if (!userId) return res.status(401).json({ message: "Not authorized" });
 
