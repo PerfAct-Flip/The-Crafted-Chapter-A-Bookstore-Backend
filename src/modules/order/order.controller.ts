@@ -2,9 +2,7 @@ import type { NextFunction, Response } from "express";
 import type { AuthenticatedRequest } from "../../types/common";
 import { success, error } from "../../utils/response";
 import orderService from "./order.service";
-
-const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-
+import { UUID_RE } from "../../utils/helper";
 export const getMyOrders = async (
     req: AuthenticatedRequest,
     res: Response,
