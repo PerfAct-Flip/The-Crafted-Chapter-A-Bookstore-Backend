@@ -2,10 +2,10 @@ import { Router } from "express";
 import { protect } from "../../middleware/auth";
 import { getCart, addToCart, removeFromCart, clearCart } from "./cart.controller";
 const router = Router();
+router.use(protect);
 
-router.get("/", protect, getCart);
-router.post("/", protect, addToCart);
-router.delete("/:productId", protect, removeFromCart);
-router.delete("/", protect, clearCart);
-
+router.get("/", getCart);
+router.post("/", addToCart);
+router.delete("/", clearCart);
+router.delete("/:bookId", removeFromCart);
 export default router;

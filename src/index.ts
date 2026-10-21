@@ -8,7 +8,8 @@ import connectDB from "./config/db";
 import authRoutes from "./modules/auth/auth.routes";
 import productRoutes from "./modules/product/product.routes";
 import cartRoutes from "./modules/cart/cart.routes";
-import orderRoutes from "./routes/orderRoutes";
+import orderRoutes from "./modules/order/order.routes";
+import favoriteRoutes from "./modules/favorite/favorite.routes";
 import { errorHandler } from "./middleware/errorHandler";
 import { prisma } from "./lib/prisma";
 dotenv.config();
@@ -27,6 +28,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/orders", orderRoutes);
+app.use("/api/favorite", favoriteRoutes);
 
 // Central error handler — controllers call next(e), so every failure
 // (Prisma errors included) is rendered as the standard JSON envelope.
