@@ -39,6 +39,9 @@ model Book {
   cartItems  CartItem[]
   orderItems OrderItem[]
 
+  deletedAt DateTime? @map("deleted_at")
+
+  @@index([deletedAt])
   @@map("books")
 }
 
@@ -83,16 +86,22 @@ model Order {
 }
 
 model OrderItem {
-  id       String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  orderId  String @map("order_id") @db.Uuid
-  bookId   String @map("book_id") @db.Uuid
-  quantity Int
-  price    Int
+  id         String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  orderId    String  @map("order_id") @db.Uuid
+  bookId     String  @map("book_id") @db.Uuid
+  quantity   Int
+  price      Int
+  title      String  @db.VarChar(100)
+  author     String  @db.VarChar(100)
+  coverImage String? @map("cover_image") @db.VarChar(500)
 
   // Relations
   order Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
-  book  Book  @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  book  Book  @relation(fields: [bookId], references: [id], onDelete: Restrict)
 
+  @@unique([orderId, bookId])
+  @@index([orderId])
+  @@index([bookId])
   @@map("order_items")
 }
 
